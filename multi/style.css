@@ -1,0 +1,50 @@
+* { margin: 0px; padding: 0px; }
+BODY { font-family: Arial; }
+select { border: 1px solid #EEE; padding: 3px; width: 64px; }
+td { padding: 3px; margin: 5px; font-size: 11pt; }
+h2 { margin: 15px 0px; }
+h3 { margin: 5px 0px; }
+
+.page { margin: auto; width: 632px; padding-top: 20px; }
+.head { text-align: center; }
+.napoveda { padding: 10px; margin: 15px 5px; background: #EEE; text-align: justify; font-size: 10pt; }
+.napoveda .icon { float: left; font-size: 30px; padding: 0px 10px; padding-right: 20px; color: #1111FF; }
+.textinput { border: 1px solid #EEE; padding: 3px; width: 400px; }
+.button { padding: 3px; }
+.clear { clear: both; }
+.sig { margin: 10px 0px; text-align: center; }
+.code { border: 1px solid #EEE; font-size: 10pt; padding: 3px; }
+.singature_float { float: left; margin: 5px; text-align: center; min-width: 512px; min-height: 128px; }
+.singature_float .check { }
+.singature_float img { cursor: pointer; }
+.sig_list { margin: auto; width: 1080px; max-height: 528px; overflow: auto; border: 1px solid black; }
+.inside { width: 1050px; background: #000; }
+.advanced { overflow: hidden; padding: 5px; }
+.advanced input { border: 1px solid #EEE; padding: 3px; }
+.sig_buttons { width: 1080px; margin: auto; }
+.sig_buttons .button { border: 0; padding: 5px; background: #1BA0E1; color: #FFF; cursor: pointer; float: left; margin: 0px 5px 0px 0px;}
+.sig_buttons .selected { background: #000; }
+#advb { background: url("minus.png") no-repeat left center; padding-left: 16px; cursor: pointer; width: 200px; margin: auto; }
+.preview { min-width: 512px; min-height: 128px; }
+#console { max-height: 32px; overflow: auto; }
+
+.signature_top { width: 632px; margin: 20px auto; }
+.signature_top input { width: 200px; }
+.signature_top a { margin: 5px; padding: 3px; display: block; text-align: center; background: #000; color: #FFF; text-decoration: none; }
+
+.menu { margin: 20px; }
+.menu a { padding: 10px; background: #AAA; margin: 5px; color: #FFF; text-decoration: none; }
+
+.levy { width: 432px; float: left; }
+.pravy { width: 200px; float: right; }
+        
+.register { margin: auto; }
+.small { font-size: 10px; }
+.ctr{ text-align: center; }
+.login { margin: auto; }
+.clr { clear: both; }
+
+label { margin: 5px; color: #999; }
+
+.logged { position: absolute; top: 2px; right: 2px; background: #FAFAFA; padding: 5px; text-align: right; }
+.logged a { color: #5555FF; text-decoration: none; }

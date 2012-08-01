@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule wot_signature\.png ./wot_signature.php
