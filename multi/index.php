@@ -29,37 +29,37 @@ function mysetcookie($var,$val)
   setcookie($var, $val);
   $_COOKIE[$var] = $val;
 }
-  
-$_POST["img"] = (int)$_POST["img"];
-$_POST["imgID"] = (int)$_POST["imgID"];
-if ($_POST["imgID"] != 0) $_POST["img"] = $_POST["imgID"];
-if ((int)$_POST["tankorder"] > 9) $_POST["tankorder"] = 0;
-if ($_POST["img"] > $sigCount) $_POST["img"] = 0;
+ 
+$_POST['img'] = (int)(@$_POST['img']);
+$_POST['imgID'] = (int)(@$_POST['imgID']);
+if ($_POST['imgID'] != 0) $_POST['img'] = $_POST['imgID'];
+if ((int)(@$_POST['tankorder']) > 9) $_POST['tankorder'] = 0;
+if ($_POST['img'] > $sigCount) $_POST['img'] = 0;
 
 
-if (isset($_POST["id"]))
-  mysetcookie("LastID", $_POST["id"]);
-if (isset($_POST["size"]))
-  mysetcookie("LastSize", $_POST["size"]);
-if (isset($_POST["ovoce"]))
+if (isset($_POST['id']))
+  mysetcookie('LastID', $_POST['id']);
+if (isset($_POST['size']))
+  mysetcookie('LastSize', $_POST['size']);
+if (isset($_POST['ovoce']))
 {
-  if ($_POST["check_2_0"] == 1)
+  if ($_POST['check_2_0'] == 1)
     $advanced='1';
   else
     $advanced='0';
   for($i = 0; $i < count($preklad[0][0]); $i+=1)
-    if ($_POST["check_value_$i"]=="1")
-      $advanced.='1';
+    if ($_POST["check_value_$i"] == '1')
+      $advanced .= '1';
     else
-      $advanced.='0';
+      $advanced .= '0';
   $advanced_ext = '';
   for($i = 0; $i < count($preklad[0][0]); $i+=1)
     if ($_POST["check_position_$i"]=="1")
-      $advanced_ext.='1';
+      $advanced_ext .= '1';
     else
-      $advanced_ext.='0';
+      $advanced_ext .= '0';
   
-  if ($_POST["tanksize"] == "Big")  $settings='1'; else if ($_POST["tanksize"] == "none") $settings='2'; else if ($_POST['tanksize'] == 'mini') $settings='3'; else $settings='0';
+  if ($_POST['tanksize'] == 'Big')  $settings='1'; else if ($_POST['tanksize'] == 'none') $settings='2'; else if ($_POST['tanksize'] == 'mini') $settings='3'; else $settings='0';
   $settings .= (int)$_POST["tankorder"];
   $settings .= (int)$_POST["positionSmall"];
   $settings .= (int)$_POST["tankname"];
@@ -70,14 +70,14 @@ if (isset($_POST["ovoce"]))
   mysetcookie("LastSettings", $settings);
 }
 
-if ($_POST["img"]!="")
-  mysetcookie("LastImg", $_POST["img"]);
+if (isset($_POST['img']))
+  mysetcookie('LastImg', $_POST['img']);
 
-if ($_POST["font"]!="")
-  mysetcookie("LastFont", $_POST["font"]);
+if (isset($_POST['font']))
+  mysetcookie('LastFont', $_POST['font']);
   
-if (isset($_POST["flag"]))
-  mysetcookie("LastFlag", $_POST["flag"]);
+if (isset($_POST['flag']))
+  mysetcookie('LastFlag', $_POST['flag']);
     
 require 'header.php';
       
@@ -85,84 +85,84 @@ require 'header.php';
       {
         $jazyk = 1;
         $texty = array(
-          "title" => "Generátor signatur",
-          "napoveda" => "Pro zjištění ID si otevřete Váš profil na worldoftanks.com (nebo eu) a zkopírujte si adresu. Měla by vypadat nějak takhle:<br>http://game.worldoftanks.eu/accounts/<strong>500347336-SkaceKachna</strong>/<br> Zvýrazněná část je ID hráče, které zadáte do pole.",
-          "id" => "Zadejte Vaše ID",
-          "server" => "Server",
-          "button" => "Generovat",
-          "button_save" => "Uložit",
-          "posted_title" => "Vaše signatura:",
-          "alert" => "Pro zrychlení načítání budou data obnovována pouze jednou denně.<br><br>",
-          "size" => "Velikost",
-          "history" => "Historie",
-          "history_text" => "Ukládat historii",
-          "advanced" => "Pokročilá nastavení",
-          "show" => "Vypsat",
-          "tanksize" => "Velikost ikon tanků",
-          "preview" => "Náhled",
-          "flag" => "Vlajka",
-          "font" => "Velikost písma",
-          "fontdesc" => "Zadejte 0 pro automatickou velikost",
-          "tankorder" => "Seřadit tanky podle",
-          "tankorder_0" => "Počet bitev",
-          "tankorder_1" => "Tier",
-          "category_0" => "Vše",
-          "category_1" => "Originální rendery",
-          "category_2" => "Originální wallpapery",
-          "category_3" => "Historické",
-          "category_4" => "Ostatní",
-          "category_5" => "Kresby",
-          "position" => "Pozice",
-          "value" => "Hodnota",
-          "tankname" => "Zobrazit název tanku",
-          "tanknumbers" => "Zobrazit u tanku počet bitev a vítězství",
-          "positionSmall" => "Zobrazit pouze pozice < 1000"
+          'title' => 'Generátor signatur',
+          'napoveda' => 'Pro zjištění ID si otevřete Váš profil na worldoftanks.com (nebo eu) a zkopírujte si adresu. Měla by vypadat nějak takhle:<br>http://game.worldoftanks.eu/accounts/<strong>500347336-SkaceKachna</strong>/<br> Zvýrazněná část je ID hráče, které zadáte do pole.',
+          'id' => 'Zadejte Vaše ID',
+          'server' => 'Server',
+          'button' => 'Generovat',
+          'button_save' => 'Uložit',
+          'posted_title' => 'Vaše signatura:',
+          'alert' => 'Pro zrychlení načítání budou data obnovována pouze jednou denně.<br><br>',
+          'size' => 'Velikost',
+          'history' => 'Historie',
+          'history_text' => 'Ukládat historii',
+          'advanced' => 'Pokročilá nastavení',
+          'show' => 'Vypsat',
+          'tanksize' => 'Velikost ikon tanků',
+          'preview' => 'Náhled',
+          'flag' => 'Vlajka',
+          'font' => 'Velikost písma',
+          'fontdesc' => 'Zadejte 0 pro automatickou velikost',
+          'tankorder' => 'Seřadit tanky podle',
+          'tankorder_0' => 'Počet bitev',
+          'tankorder_1' => 'Tier',
+          'category_0' => 'Vše',
+          'category_1' => 'Originální rendery',
+          'category_2' => 'Originální wallpapery',
+          'category_3' => 'Historické',
+          'category_4' => 'Ostatní',
+          'category_5' => 'Kresby',
+          'position' => 'Pozice',
+          'value' => 'Hodnota',
+          'tankname' => 'Zobrazit název tanku',
+          'tanknumbers' => 'Zobrazit u tanku počet bitev a vítězství',
+          'positionSmall' => 'Zobrazit pouze pozice < 1000'
         );
       } else {
         $jazyk = 0;
         $texty = array(
-          "title" => "Signature Generator",
-          "napoveda" => "To get your ID, open your profile on worldoftanks.com (or your server). Adress will look somelike that:<br>http://game.worldoftanks.eu/accounts/<strong>500347336-SkaceKachna</strong>/<br> Bold part of adress is your ID, witch you enter to textbox.",
-          "id" => "Enter Your ID",
-          "server" => "Server",
-          "button" => "Generate",
-          "button_save" => "Save",
-          "posted_title" => "Your signature:",
-          "alert" => "To incerase speed of loading, your singature will refresh only once per day.<br><br>",
-          "size" => "Size",
-          "history" => "History",
-          "history_text" => "Save history",
-          "advanced" => "Advanced settings",
-          "show" => "Show",
-          "tanksize" => "Size of tanks icons",
-          "preview" => "Preview",
-          "flag" => "Flag",
-          "font" => "Font size",
-          "fontdesc" => "Enter 0 for default size",
-          "tankorder"=> "Order tanks by",
-          "tankorder_0" => "Battles",
-          "tankorder_1" => "Tier",
-          "category_0" => "All",
-          "category_1" => "Original Renders",
-          "category_2" => "Original Wallpapers",
-          "category_3" => "Historical",
-          "category_4" => "Misc",
-          "category_5" => "Paintings",
-          "position" => "Position",
-          "value" => "Value",
-          "tankname" => "Show tank name",
-          "tanknumbers" => "Show number of battles and wins for tank",
-          "positionSmall" => "Show only positions < 1000"
+          'title' => 'Signature Generator',
+          'napoveda' => 'To get your ID, open your profile on worldoftanks.com (or your server). Adress will look somelike that:<br>http://game.worldoftanks.eu/accounts/<strong>500347336-SkaceKachna</strong>/<br> Bold part of adress is your ID, witch you enter to textbox.',
+          'id' => 'Enter Your ID',
+          'server' => 'Server',
+          'button' => 'Generate',
+          'button_save' => 'Save',
+          'posted_title' => 'Your signature:',
+          'alert' => 'To incerase speed of loading, your singature will refresh only once per day.<br><br>',
+          'size' => 'Size',
+          'history' => 'History',
+          'history_text' => 'Save history',
+          'advanced' => 'Advanced settings',
+          'show' => 'Show',
+          'tanksize' => 'Size of tanks icons',
+          'preview' => 'Preview',
+          'flag' => 'Flag',
+          'font' => 'Font size',
+          'fontdesc' => 'Enter 0 for default size',
+          'tankorder'=> 'Order tanks by',
+          'tankorder_0' => 'Battles',
+          'tankorder_1' => 'Tier',
+          'category_0' => 'All',
+          'category_1' => 'Original Renders',
+          'category_2' => 'Original Wallpapers',
+          'category_3' => 'Historical',
+          'category_4' => 'Misc',
+          'category_5' => 'Paintings',
+          'position' => 'Position',
+          'value' => 'Value',
+          'tankname' => 'Show tank name',
+          'tanknumbers' => 'Show number of battles and wins for tank',
+          'positionSmall' => 'Show only positions < 1000'
         );
       }
-      if ($_POST["id"]!="" && $_POST["server"]!="" && $_POST["img"]!="")
+      if (isset($_POST['id']) && $_POST['id']!='' && isset($_POST['server']) && $_POST['server']!='' && isset($_POST['img']) && $_POST['img']!='')
       {
-        $advanced = $_COOKIE["LastAdvanced"];
-        $advanced_ext = $_COOKIE["LastAdvancedExt"];
-        $settings = $_COOKIE["LastSettings"];
+        $advanced = $_COOKIE['LastAdvanced'];
+        $advanced_ext = $_COOKIE['LastAdvancedExt'];
+        $settings = $_COOKIE['LastSettings'];
           
-        if ($_POST["flag"] == "")
-          $_POST["flag"] = -1;
+        if ($_POST['flag'] == '')
+          $_POST['flag'] = -1;
         
         $link = "$site_url/sig2@$_POST[id]@$_POST[server]@$_POST[img]@$_POST[size]@$advanced@$advanced_ext@$settings@$_POST[flag]@$_POST[font].png";
           
@@ -181,9 +181,9 @@ require 'header.php';
       ?>
       <form method='post' onsubmit='return Generate()'>
         <input type='hidden' id='imgID' name='imgID' value='0'>
-        <div class="napoveda"><div class="icon">?</div><?php echo $texty["napoveda"]?><div class="clear"></div></div>
+        <div class="napoveda"><div class="icon">?</div><?php echo $texty['napoveda']?><div class="clear"></div></div>
         <table width='100%'>
-          <tr><td align='right'><label for="id"><?php echo $texty["id"]?>:</label></td><td><input type="text" name="id" id="user" value="<?php echo $_COOKIE["LastID"]?>" class="textinput"></td></tr>
+          <tr><td align='right'><label for="id"><?php echo $texty['id']?>:</label></td><td><input type="text" name="id" id="user" value="<?php if (isset($_COOKIE['LastID'])) echo $_COOKIE['LastID']?>" class="textinput"></td></tr>
           <tr><td align='right'><label for="server"><?php echo $texty["server"]?>:</label></td><td><select name="server" id="server"><option value="eu">EU</option><option value="com">US</option><option value="ru">RU</option><option value="sea">SEA</option></select></td></tr>
           <tr><td align='right'><label for="size"><?php echo $texty["size"]?>:</label></td><td><input type="radio" name="size" onChange="Preview()" id="size0" value="0" checked="true"<?php if ($_COOKIE["LastSize"] == 0) echo " checked=\"true\"";?>> 400x100 (WoT forums)<br><input type="radio" id="size1" onChange="Preview()" name="size" value="1"<?php if ($_COOKIE["LastSize"] == 1) echo " checked=\"true\"";?>> 512x128 (Standard size)</td></tr>
           <tr><td align='right'><label for="flag"><?php echo $texty["flag"]?>:</label></td><td>
@@ -215,15 +215,15 @@ require 'header.php';
           <tr><td colspan='2'>
             <div class="advanced">
               <?php
-              if ($_COOKIE["LastAdvanced"]=="")
-                 $_COOKIE["LastAdvanced"] = "111111111111111";
-              if ($_COOKIE["LastAdvancedExt"]=="")
-                 $_COOKIE["LastAdvancedExt"] = "11111111111111";
-              if ($_COOKIE["LastSettings"]=="")
+              if (!isset($_COOKIE['LastAdvanced']) || $_COOKIE['LastAdvanced']=='')
+                 $_COOKIE['LastAdvanced'] = '111111111111111';
+              if (!isset($_COOKIE['LastAdvancedExt']) || $_COOKIE['LastAdvancedExt']=='')
+                 $_COOKIE['LastAdvancedExt'] = '11111111111111';
+              if (!isset($_COOKIE['LastSettings']) || $_COOKIE['LastSettings']=='')
                 $_COOKIE["LastSettings"] = "01101";
-              $advanced = str_split($_COOKIE["LastAdvanced"]);
-              $advanced_ext = str_split($_COOKIE["LastAdvancedExt"]);
-              $settings = $_COOKIE["LastSettings"];
+              $advanced = str_split($_COOKIE['LastAdvanced']);
+              $advanced_ext = str_split($_COOKIE['LastAdvancedExt']);
+              $settings = $_COOKIE['LastSettings'];
               
               echo "<div id='advb'>$texty[advanced]</div>";
               echo "<div id='adv1'>";
@@ -271,7 +271,7 @@ require 'header.php';
               echo "<input type='checkbox' name='tanknumbers' id='tanknumbers' value='1' onChange='Preview()'"; if ($settings[4] == 1) echo ' checked = "checked"'; echo "> $texty[tanknumbers]</td></tr>";
               
               echo "<tr><td><strong>$texty[font]</strong>:</td><td><input type='text' name='font' onChange='Preview()' value='";
-              if ($_COOKIE["LastFont"]!="") echo $_COOKIE["LastFont"]; else echo "0";
+              if (isset($_COOKIE['LastFont']) && $_COOKIE['LastFont']!="") echo $_COOKIE['LastFont']; else echo "0";
               echo "' id='font'><br>($texty[fontdesc])";
               echo "</td></tr>";
               
@@ -305,7 +305,7 @@ require 'header.php';
       <div class="main">
         <div align="center">
           <div class='preview'><img id='preview' src='sig/wotpreview.png'></div>
-          <input type="submit" name="ovoce" value="<?php if ($user_logged) echo $texty["button_save"]; else echo $texty["button"]?>" class="button"> <button class="button" onclick="return Preview();"><?php echo $texty["preview"];?></button>
+          <input type="submit" name="ovoce" value="<?php echo $texty['button']?>" class="button"> <button class="button" onclick="return Preview();"><?php echo $texty["preview"];?></button>
         </div>
       <script type="text/javascript" src="form.js"></script>
       <script type="text/javascript" src="ovoce.js"></script>
