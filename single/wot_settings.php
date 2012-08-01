@@ -42,7 +42,8 @@
         
         if (isset($_POST['ok']))
         {
-          $_POST["img"] = (int)$_POST["img"];
+          $_POST['img'] = (int)$_POST['img'];
+          $_POST['cache'] = (boolean)@($_POST['cache']);
           
           //Values
           $advanced = '0';
@@ -60,10 +61,10 @@
           }
 
           if ($_POST["tanksize"] == "Big")  $settings='1'; else if ($_POST["tanksize"] == "none") $settings='2'; else $settings='0';
-          $settings .= (int)$_POST["tankorder"];
-          $settings .= (int)$_POST["positionSmall"];
-          $settings .= (int)$_POST["tankname"];
-          $settings .= (int)$_POST["tanknumbers"];
+          $settings .= (int)@$_POST["tankorder"];
+          $settings .= (int)@$_POST["positionSmall"];
+          $settings .= (int)@$_POST["tankname"];
+          $settings .= (int)@$_POST["tanknumbers"];
           
           //Now, save them to config file
           $f = fopen('wot_settings.dat','w');
@@ -72,19 +73,28 @@
           
           echo '<div class="message"><h2>Your settings was saved</h2><img src="wot_signature.php" alt="result"></div>';
         } else {
-          $str = file_get_contents('wot_settings.dat');
+          if (file_exists('wot_settings.dat'))
+          {
+            $str = @file_get_contents('wot_settings.dat');
+          }
+          else
+          {
+            file_put_contents('wot_settings.dat', '');
+            $str = '';
+          }
+            
           $values = explode('|',$str);
-          $_POST['id'] = $values[0];
-          $_POST['server'] = $values[1];
-          $_POST['img'] = $values[2];
-          $_POST['size'] = $values[3];
-          $advanced = $values[4];
-          $advanced_ext = $values[5];
-          $settings = $values[6];
-          $_POST['flag'] = $values[7];
-          $_POST['hsize'] = $values[8];
-          $_POST['cache'] = $values[9];
-          $_POST['languages'] = $values[10]; 
+          $_POST['id'] = @$values[0];
+          $_POST['server'] = @$values[1];
+          $_POST['img'] = @$values[2];
+          $_POST['size'] = @$values[3];
+          $advanced = @$values[4];
+          $advanced_ext = @$values[5];
+          $settings = @$values[6];
+          $_POST['flag'] = @$values[7];
+          $_POST['hsize'] = @$values[8];
+          $_POST['cache'] = @$values[9];
+          $_POST['languages'] = @$values[10]; 
         }
         
         $dir = $_SERVER['SCRIPT_NAME'];
@@ -143,7 +153,7 @@
               {
                 echo '<tr><td>'.$stat_values[$i].'</td>';
                 echo '<td><input type="checkbox" name="check_value_'.$i.'" value="1"'; if ($advanced[1+$i] == 1) echo ' checked = "checked"'; echo '> value</td>';
-                if ($position_available[$i]) {
+                if (@$position_available[$i]) {
                   echo '<td><input type="checkbox" name="check_position_'.$i.'" value="1"'; if ($advanced_ext[$i] == 1) echo ' checked = "checked"'; echo '> position</td>';
                 } else {
                   echo '<td><input type="hidden" name="check_position_'.$i.'" id="check_position_'.$i.'" value="1"></td>';
@@ -171,10 +181,10 @@
               <input type='text' name='hsize' value='<?php echo $_POST['hsize']?>'>
             </td></tr>
             <tr><td><label>Cache</label></td><td>
-              <input type='checkbox' name='cache' value='1'<?php if ($_POST['cache'] == 1) echo ' checked = "checked"';?>> Cache generated image
+              <input type='checkbox' name='cache' value='1'<?php if (isset($_POST['cache']) && $_POST['cache'] == 1) echo ' checked = "checked"';?>> Cache generated image
             </td></tr>
             <tr><td><label>Languages</label></td><td>
-              <input type='checkbox' name='languages' value='1'<?php if ($_POST['languages'] == 1) echo ' checked = "checked"';?>> Generate signature in other than default language
+              <input type='checkbox' name='languages' value='1'<?php if (isset($_POST['languages']) && $_POST['languages'] == 1) echo ' checked = "checked"';?>> Generate signature in other than default language
             </td></tr>
             <tr><td><label>Background</label></td><td>
               <div class='backgrounds'>

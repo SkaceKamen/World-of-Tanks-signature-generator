@@ -315,9 +315,9 @@ else if (!file_exists($filename) || !$cache)  //If this signature isn't already 
       
       //Get rest of data
       $tier = trim(get_part($str,'<span class="level">','</span>'));  
-      $bitev = get_part($str,'<td class="right value">','</td>');  //Battles
+      $bitev = str_replace('&nbsp;', ' ', get_part($str,'<td class="right value">','</td>'));  //Battles
       $str = get_part($str,'<td class="right value">','</tr>');
-      $vitezstvi = get_part($str,'<td class="right value">','</td>'); //Wins
+      $vitezstvi = str_replace('&nbsp;', ' ', get_part($str,'<td class="right value">','</td>')); //Wins
 
       $nazev = iconv('UTF-8', 'Latin2', $nazev); //Encode tank name to Latin2 (used by imagestring)
       
@@ -383,7 +383,8 @@ else if (!file_exists($filename) || !$cache)  //If this signature isn't already 
       case 'eu': $text = 'EU server'; break;
       case 'com': $text = 'NA server'; break;
       case 'ru': $text = 'RU server'; break;
-    }
+      case 'sea': $text = 'SEA server'; break;
+    }                                
     
     //Draw server name
     $box = imagettfbbox($fontsize, 0, $font, $text);
@@ -439,7 +440,7 @@ else if (!file_exists($filename) || !$cache)  //If this signature isn't already 
     {
       global $line, $positionSmall;
       
-      if ($line[2]!='')
+      if (isset($line[2]) && $line[2]!='')
         if (($positionSmall && (int)(str_replace(' ','',$line[2])) < 1000) || !$positionSmall)
           return $str . ' ('.$line[2].')';
       return $str;
