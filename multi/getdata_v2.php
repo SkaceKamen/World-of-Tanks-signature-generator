@@ -110,7 +110,7 @@ $positionSmall = $settings[2];
 $tankname = $settings[3];
 $tanknumbers = $settings[4];
 
-if (is_numeric($_GET['jazyk']) && $_GET['jazyk'] != "")
+if (isset($_GET['jazyk']) && is_numeric($_GET['jazyk']) && $_GET['jazyk'] != "")
   $jazyk = $_GET['jazyk'];
 
 /** TRANSLATION OF TEXTS **/
@@ -300,9 +300,9 @@ else if (!file_exists($filename))  //If this signature isn't already cached
       
       //Get rest of data
       $tier = trim(strip_tags(get_part($str,'<span class="level">','</span>')));  
-      $bitev = get_part($str,'<td class="right value">','</td>');  //Battles
+      $bitev = str_replace('&nbsp;', ' ', get_part($str,'<td class="right value">','</td>'));  //Battles
       $str = get_part($str,'<td class="right value">','</tr>');
-      $vitezstvi = get_part($str,'<td class="right value">','</td>'); //Wins
+      $vitezstvi = str_replace('&nbsp;', ' ', get_part($str,'<td class="right value">','</td>')); //Wins
 
       $nazev = iconv('UTF-8', 'Latin2', $nazev); //Encode tank name to Latin2 (used by imagestring)
       
@@ -368,6 +368,7 @@ else if (!file_exists($filename))  //If this signature isn't already cached
       case 'eu': $text = 'EU server'; break;
       case 'com': $text = 'NA server'; break;
       case 'ru': $text = 'RU server'; break;
+      case 'sea': $text = 'SEA server'; break;
     }
     
     //Draw server name
@@ -424,7 +425,7 @@ else if (!file_exists($filename))  //If this signature isn't already cached
     {
       global $line, $positionSmall;
       
-      if ($line[2]!='')
+      if (isset($line[2]) && $line[2]!='')
         if (($positionSmall && (int)(str_replace(' ','',$line[2])) < 1000) || !$positionSmall)
           return $str . ' ('.$line[2].')';
       return $str;
@@ -588,16 +589,16 @@ else if (!file_exists($filename))  //If this signature isn't already cached
           //Draw tank battles/wins count
           if ($tanknumbers == 1)
           {
-            imagestring($img, 1, $xx, $yy + $tankheight - imagefontheight(1), $tank["bitev"], $c_white);
-            imagestring($img, 1, $xx + $tankwidth - strlen($tank["vitezstvi"]) * imagefontwidth(1), $yy + $tankheight - imagefontheight(1), $tank["vitezstvi"], $c_white);
+            imagestring($img, 1, $xx, $yy + $tankheight - imagefontheight(1), $tank['bitev'], $c_white);
+            imagestring($img, 1, $xx + $tankwidth - strlen($tank['vitezstvi']) * imagefontwidth(1), $yy + $tankheight - imagefontheight(1), $tank["vitezstvi"], $c_white);
           }
           //Move to next tank
           $xx += $tankwidth + 4;
         } else break;
       }
     }
-    
-    
+       
+    //Removed due high performance demands
     //We don't want to have more versions from same user
     /*$d = opendir("cache/");
     while($s = readdir($d))

@@ -60,10 +60,10 @@ if (isset($_POST['ovoce']))
       $advanced_ext .= '0';
   
   if ($_POST['tanksize'] == 'Big')  $settings='1'; else if ($_POST['tanksize'] == 'none') $settings='2'; else if ($_POST['tanksize'] == 'mini') $settings='3'; else $settings='0';
-  $settings .= (int)$_POST["tankorder"];
-  $settings .= (int)$_POST["positionSmall"];
-  $settings .= (int)$_POST["tankname"];
-  $settings .= (int)$_POST["tanknumbers"];
+  $settings .= (int)$_POST['tankorder'];
+  $settings .= (int)$_POST['positionSmall'];
+  $settings .= (int)@($_POST['tankname']);
+  $settings .= (int)$_POST['tanknumbers'];
       
   mysetcookie("LastAdvanced", $advanced);
   mysetcookie("LastAdvancedExt", $advanced_ext);
@@ -260,10 +260,10 @@ require 'header.php';
               
               echo "<tr><td><strong>$texty[tankorder]</strong></td><td>";
               echo "<input type='radio' name='tankorder' onChange='Preview()' value='0'";
-              if ($advanced[14] == 0) echo " checked='true'";
+              if (@$advanced[14] == 0) echo " checked='true'";
               echo "> $texty[tankorder_0]<br>";
               echo "<input type='radio' name='tankorder' onChange='Preview()' value='1' id='tankOrder'";
-              if ($advanced[14] == 1) echo " checked='true'";
+              if (@$advanced[14] == 1) echo " checked='true'";
               echo "> $texty[tankorder_1]";
               echo "</td></tr>";
               
@@ -271,7 +271,7 @@ require 'header.php';
               echo "<input type='checkbox' name='tanknumbers' id='tanknumbers' value='1' onChange='Preview()'"; if ($settings[4] == 1) echo ' checked = "checked"'; echo "> $texty[tanknumbers]</td></tr>";
               
               echo "<tr><td><strong>$texty[font]</strong>:</td><td><input type='text' name='font' onChange='Preview()' value='";
-              if (isset($_COOKIE['LastFont']) && $_COOKIE['LastFont']!="") echo $_COOKIE['LastFont']; else echo "0";
+              if (isset($_COOKIE['LastFont']) && $_COOKIE['LastFont'] != '') echo $_COOKIE['LastFont']; else echo "0";
               echo "' id='font'><br>($texty[fontdesc])";
               echo "</td></tr>";
               
@@ -293,10 +293,12 @@ require 'header.php';
     <div class="sig_list">
       <div class="inside" id="siglist">
         <?php
-          if ($_COOKIE["LastImg"]=="")
-            $_COOKIE["LastImg"] = 1;
+          if (!isset($_COOKIE['LastImg']) && $_COOKIE['LastImg'] == '')
+            $_COOKIE['LastImg'] = 1;
           for($i=1;$i<=$sigCount;$i+=1)
-            { echo "<div class='singature_float'><img src='sig/wot$i.png' alt='' onclick='sig_selected($i)'><div class='check'><input type='radio' id='img$i' name='img' value='$i' "; if ($i == $_COOKIE["LastImg"]) echo " checked='true'"; echo "></div></div>"; }
+          {
+            echo "<div class='singature_float'><img src='sig/wot$i.png' alt='' onclick='sig_selected($i)'><div class='check'><input type='radio' id='img$i' name='img' value='$i' "; if ($i == $_COOKIE['LastImg']) echo " checked='true'"; echo "></div></div>";
+          }
         ?>
         <div class="clear"></div>
       </div>
