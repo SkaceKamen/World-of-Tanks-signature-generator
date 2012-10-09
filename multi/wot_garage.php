@@ -81,9 +81,9 @@ if (!is_numeric($player_id))
 if ($player_server == '') $player_server = WOT_DEFAULT_SERVER;
 
 if (WOT_ALLOW_MORE_PER_USER)
-    $filename = WOT_FOLDER_CACHE_GARAGE . '/garage_' . $player_server.'_'.$player_id.date('d_m_y').'_'.$player_flag.'_'.'_'.$image_size.'_'.implode('',$settings).'_'.$language_id.'.png';
+    $filename = WOT_FOLDER_CACHE_GARAGES . '/garage_' . $player_server.'_'.$player_id.date('d_m_y').'_'.$player_flag.'_'.'_'.$image_size.'_'.implode('',$settings).'_'.$language_id.'.png';
 else
-    $filename = WOT_FOLDER_CACHE_GARAGE . '/garage_' . $player_server.'_'.$player_id.date('d_m_y').'_'.$language_id.'.png';
+    $filename = WOT_FOLDER_CACHE_GARAGES . '/garage_' . $player_server.'_'.$player_id.date('d_m_y').'_'.$language_id.'.png';
 
 /** CHECK IF ID IS ENTERED **/
 if ($player_id == '')
@@ -120,16 +120,16 @@ else if (!file_exists($filename) || (WOT_ALLOW_NOCACHE_PARAM && @$GET['nocache']
       //Clear cache, if it wasn't cleared today
       if (!WOT_CACHE_CRON)
       {
-          if (!file_exists(WOT_FOLDER_CACHE_IMAGES . '/cache'.date('d_m_y')))
+          if (!file_exists(WOT_FOLDER_CACHE_GARAGES . '/cache'.date('d_m_y')))
           {
-              $d = opendir(WOT_FOLDER_CACHE_IMAGES);
+              $d = opendir(WOT_FOLDER_CACHE_GARAGES);
               while($s = readdir($d))
               {
                   if ($s!='.' && $s!='..')
                       if (strpos($s,date('d_m_y')) == 0)
-                          unlink(WOT_FOLDER_CACHE_IMAGES . '/'.$s);
+                          unlink(WOT_FOLDER_CACHE_GARAGES . '/'.$s);
               }
-              $f = fopen(WOT_FOLDER_CACHE_IMAGES . '/cache'.date('d_m_y'),'w');
+              $f = fopen(WOT_FOLDER_CACHE_GARAGES . '/cache'.date('d_m_y'),'w');
               fclose($f);
           }
           if (!file_exists(WOT_FOLDER_CACHE_JSON . '/cache'.date('d_m_y')))

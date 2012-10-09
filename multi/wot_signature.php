@@ -142,16 +142,28 @@ else if (!file_exists($filename) || (WOT_ALLOW_NOCACHE_PARAM && @$GET['nocache']
       //Clear cache, if it wasn't cleared today
       if (!WOT_CACHE_CRON)
       {
-          if (!file_exists(WOT_FOLDER_CACHE_IMAGES . '/cache'.date('d_m_y')))
+          if (!file_exists(WOT_FOLDER_CACHE_LINES . '/cache'.date('d_m_y')))
           {
-              $d = opendir(WOT_FOLDER_CACHE_IMAGES);
+              $d = opendir(WOT_FOLDER_CACHE_LINES);
               while($s = readdir($d))
               {
                   if ($s!='.' && $s!='..')
                       if (strpos($s,date('d_m_y')) == 0)
-                          unlink(WOT_FOLDER_CACHE_IMAGES . '/'.$s);
+                          unlink(WOT_FOLDER_CACHE_LINES . '/'.$s);
               }
-              $f = fopen(WOT_FOLDER_CACHE_IMAGES . '/cache'.date('d_m_y'),'w');
+              $f = fopen(WOT_FOLDER_CACHE_LINES . '/cache'.date('d_m_y'),'w');
+              fclose($f);
+          }
+          if (!file_exists(WOT_FOLDER_CACHE_CLANS . '/cache'.date('d_m_y')))
+          {
+              $d = opendir(WOT_FOLDER_CACHE_CLANS);
+              while($s = readdir($d))
+              {
+                  if ($s!='.' && $s!='..')
+                      if (strpos($s,date('d_m_y')) == 0)
+                          unlink(WOT_FOLDER_CACHE_CLANS . '/'.$s);
+              }
+              $f = fopen(WOT_FOLDER_CACHE_CLANS . '/cache'.date('d_m_y'),'w');
               fclose($f);
           }
           if (!file_exists(WOT_FOLDER_CACHE_JSON . '/cache'.date('d_m_y')))
