@@ -163,7 +163,6 @@ else if (!file_exists($filename) || !$cache)  //If this signature isn't already 
   /** GET URL, RU SERVER HAS DIFFERENT **/
   switch(strtolower($server))
   {
-    case 'ru': $url="http://challenge.worldoftanks.ru/uc/accounts/$id/"; break;
     case 'sea': $url = "http://worldoftanks-sea.com/community/accounts/$id/"; break;
     default: $url="http://worldoftanks.$server/community/accounts/$id/"; break;
   }

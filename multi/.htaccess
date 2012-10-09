@@ -1,4 +1,6 @@
 ErrorDocument 404 /404.php
 Options +FollowSymlinks
 RewriteEngine On
-RewriteRule ^sig2@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)\.png$ ./getdata_v2.php?id=$1&server=$2&img=$3&size=$4&advanced=$5&advanced_ext=$6&settings=$7&flag=$8&font=$9 [QSA,L]
+RewriteRule ^sig2@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)\.png$ ./wot_old/getdata_v2.php?id=$1&server=$2&img=$3&size=$4&advanced=$5&advanced_ext=$6&settings=$7&flag=$8&font=$9 [QSA,L]
+RewriteRule ^signature@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)@(.*)\.png$ ./wot_signature.php?id=$1&server=$2&img=$3&size=$4&lines=$5&settings=$6&flag=$7&font=$8 [QSA,L]
+RewriteRule ^garage@(.*)@(.*)@(.*)@(.*)@(.*)\.png$ ./wot_garage.php?id=$1&server=$2&size=$3&settings=$4&flag=$5 [QSA,L]
