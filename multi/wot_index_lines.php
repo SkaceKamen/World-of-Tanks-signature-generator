@@ -379,8 +379,7 @@ if (file_exists(WOT_FOLDER_BACKGROUNDS . '/categories.dat'))
     var BACKGROUNDS_TOTAL = <?php echo count($backgrounds)?>;
     var CATEGORIES = <?php echo json_encode($categories)?>; 
   </script>
-  <script type="text/javascript" src="wot_data/form.js"></script>
-  <script type="text/javascript" src="wot_data/ovoce.js"></script>
+  <script type="text/javascript" src="wot_data/form.js"></script>   
   <script type="text/javascript">sig_category();</script>
   </div>
 </form>

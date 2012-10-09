@@ -64,14 +64,14 @@ if (isset($values['player_id']))
             if ($explode[$end] != '')
             {
                 $values['player_id'] = $explode[$end];
-                if (strpos($values['player_id'], '-'))
-                {
-                    $explode = explode('-', $values['player_id']);
-                    $values['player_id'] = (int)$explode[0];
-                }
             } else {
                 $values['player_id'] = '';
             }
+        }
+        if (strpos($values['player_id'], '-'))
+        {
+            $explode = explode('-', $values['player_id']);
+            $values['player_id'] = (int)$explode[0];
         }
     }
 }

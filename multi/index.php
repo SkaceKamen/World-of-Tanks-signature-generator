@@ -56,7 +56,7 @@ ob_clean();
   <title>World of tanks Singature Creator</title>
   <link rel="stylesheet" href="<?php echo WOT_FOLDER_DATA?>/style.css" type="text/css">
   <script type="text/javascript" src="<?php echo WOT_FOLDER_DATA?>/cookies.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="<?php echo WOT_FOLDER_DATA?>/jquery-1.8.2.min.js"></script>
   <script type="text/javascript">
     var SITE_URL = "<?php echo $SITE_URL?>";
     var FOLDER_BACKGROUNDS = "<?php echo WOT_FOLDER_BACKGROUNDS?>";

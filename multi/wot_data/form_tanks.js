@@ -3,6 +3,25 @@ function Preview()
   var userid = document.getElementById('user').value;
   if (userid != "")
   {
+    if (userid.indexOf('/') != -1)
+    {
+        var sp = userid.split('/');
+        var end = sp.length - 1;
+        while(sp[end] == '' && end > 0) {
+            end--;
+        }
+        if (sp[end] != '')
+        {
+            userid = sp[end];
+        }
+        
+    }
+    if (userid.indexOf('-') != -1)
+    {
+        var sp = userid.split('-');
+        userid = sp[0];
+    }
+  
     var server = document.getElementById('server').value;
     var size = $("input[name='image_size']:checked").val();
     var flag = document.getElementById('cflag').value;

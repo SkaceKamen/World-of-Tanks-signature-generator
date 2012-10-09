@@ -61,6 +61,25 @@ function Preview()
       updatePreviewPos();
       posUpdated = true;
     }
+    
+    if (userid.indexOf('/') != -1)
+    {
+        var sp = userid.split('/');
+        var end = sp.length - 1;
+        while(sp[end] == '' && end > 0) {
+            end--;
+        }
+        if (sp[end] != '')
+        {
+            userid = sp[end];
+        }
+        
+    }
+    if (userid.indexOf('-') != -1)
+    {
+        var sp = userid.split('-');
+        userid = sp[0];
+    }
   
     var server = document.getElementById('server').value;
     var tankWins = $('tankwins')
