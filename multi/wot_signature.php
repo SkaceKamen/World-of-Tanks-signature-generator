@@ -8,6 +8,9 @@
  *     
 */     
 
+//Start caching output buffer (We don't want any output before image)
+ob_start();
+
 /** Load config **/
 include_once('wot_config.php');
 include_once(WOT_FOLDER_FUNCTIONS . '/get_language.php');
@@ -186,7 +189,9 @@ else if (!file_exists($filename) || (WOT_ALLOW_NOCACHE_PARAM && @$GET['nocache']
     imagesavealpha($img, true);
 }
 
-ob_clean();
+//Clean output buffer
+ob_end_clean();
+
 header('Content-type: image/png');
 imagepng($img);
 imagedestroy($img);
