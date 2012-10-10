@@ -1,7 +1,7 @@
 <?php
 $language_id = 0; 
 $translation = array(
-    'integrated_rating' => 'Rating'
+    'integrated_rating' => 'Rating',
     'battles' => 'Battles',
     'battle_wins' => 'Wins',
     'wins' => 'Wins',
@@ -47,7 +47,7 @@ $translation = array(
     'position' => 'Position',
     'value' => 'Value',
     'tankname' => 'Show tank name',
-    'positionSmall' => 'Show only positions < 1000'
+    'positionSmall' => 'Show only positions < 1000',
     'tankbattles' => 'Show tank battles count',
     'tankwins' => 'Show tank wins count',
     'tankpercents' => 'Percentage of wins',
