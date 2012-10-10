@@ -427,6 +427,26 @@ class Player
         return 0;
     }
     
+    public function fetch_contents($url)
+    {
+        if (function_exists('curl_version'))
+        {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            $string = curl_exec($ch);
+            curl_close($ch);
+            return $string;
+        } else {
+            if (ini_get('allow_url_fopen'))
+            {
+                return file_get_contents($url);
+            }
+        }
+        return false;
+    }
+    
     public function get_part($str,$from,$to)
     {
         $value = substr($str,strpos($str,$from)+strlen($from),300);
