@@ -53,8 +53,8 @@ class Player
     public $clan_name;
     public $clan_image;
     
-    public $data;
-    public $tanks;
+    public $data = array();
+    public $tanks = array();
     
     public $achievements;
     
@@ -88,7 +88,18 @@ class Player
             if (!file_exists($filename))
             {
                 $url = $base .'/uc/accounts/' .$this->player_id . '/api/1.5/?source_token=WG-WoT_Assistant-1.3.1';
-                $json = file_get_contents($url);
+                $try = 0;
+                do
+                {
+                    $json = @file_get_contents($url);
+                    $try++;
+                    if ($try > 5)
+                    {
+                        //Failed to load json
+                        $this->found = false;
+                        return;
+                    }
+                } while (strlen($json) == 0);
                 file_put_contents($filename, $json);     
             }
             

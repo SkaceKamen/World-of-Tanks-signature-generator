@@ -1,12 +1,15 @@
 <?php
 /**
  *  WOT SIGNATURE GENERATOR
- *  Created by Zípek Jan (zipek.cz, menxmenx@gmail.com)
+ *  Created by ZÃ­pek Jan (zipek.cz, menxmenx@gmail.com)
  *  
  *  File: wot_garage.php
  *  Description: Script for generating garage pictures
  *     
  */   
+
+//Start caching output
+ob_start();
 
 /** Load config **/
 include_once('wot_config.php');
@@ -151,7 +154,10 @@ else if (!file_exists($filename) || (WOT_ALLOW_NOCACHE_PARAM && @$GET['nocache']
     imagealphablending($img, true);
     imagesavealpha($img, true);
 }
-ob_clean();
+
+//Clear output buffer
+ob_end_clean();
+
 header('Content-type: image/png');
 imagepng($img);
 imagedestroy($img);
