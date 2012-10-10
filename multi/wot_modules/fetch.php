@@ -99,7 +99,7 @@ class Player
                         $this->found = false;
                         return;
                     }
-                } while (strlen($json) == 0)
+                } while (strlen($json) == 0);
                 file_put_contents($filename, $json);     
             }
             
