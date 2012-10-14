@@ -72,11 +72,11 @@ ob_clean();
   <body>
     <div class="page">
       <div class="head">
-        <div class="logo"><a href="wot_index.php"><img src="<?php echo WOT_FOLDER_IMAGES?>/logo.png" alt="World of tanks" border="0"></a></div>
+        <div class="logo"><a href="index.php"><img src="<?php echo WOT_FOLDER_IMAGES?>/logo.png" alt="World of tanks" border="0"></a></div>
         <?php if (WOT_GARAGE_ENABLED):?>
         <div class="menu">
-          <a href="wot_index.php?type=0"<?php if (@$GET['type']!=1) echo ' class="selected"'?>><?php echo $translation['menu_lines']?></a>
-          <a href="wot_index.php?type=1"<?php if (@$GET['type']==1) echo ' class="selected"'?>><?php echo $translation['menu_garage']?></a>
+          <a href="index.php?type=0"<?php if (@$GET['type']!=1) echo ' class="selected"'?>><?php echo $translation['menu_lines']?></a>
+          <a href="index.php?type=1"<?php if (@$GET['type']==1) echo ' class="selected"'?>><?php echo $translation['menu_garage']?></a>
         </div>
         <?php endif;?>
       </div>
