@@ -74,6 +74,8 @@ if (isset($values['player_id']))
             $values['player_id'] = (int)$explode[0];
         }
     }
+} else {
+	$values['player_id'] = '';
 }
 
 if (isset($values['server']))
