@@ -57,10 +57,10 @@ define('WOT_FOLDER_BIG','wot_data/img');
 define('WOT_FOLDER_SMALL', 'wot_data/imgSmall'); 
 define('WOT_FOLDER_CONTUR', 'wot_data/imgContur');
 
-define('WOT_FOLDER_CACHE_LINES', 'wot_data/cache_images');
-define('WOT_FOLDER_CACHE_GARAGES', 'wot_data/cache_images');
-define('WOT_FOLDER_CACHE_CLANS', 'wot_data/cache_images');
-define('WOT_FOLDER_CACHE_JSON', 'wot_data/cache_json');
+define('WOT_FOLDER_CACHE_LINES', 'wot_data/wot_cache_images');
+define('WOT_FOLDER_CACHE_GARAGES', 'wot_data/wot_cache_images');
+define('WOT_FOLDER_CACHE_CLANS', 'wot_data/wot_cache_images');
+define('WOT_FOLDER_CACHE_JSON', 'wot_data/wot_cache_json');
 
 $wot_servers = array('eu', 'com', 'ru', 'sea');
 ?>
