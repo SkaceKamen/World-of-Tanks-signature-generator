@@ -1,5 +1,5 @@
 <?php
-$language_id = 0; 
+$language_id = 2; 
 $translation = array(
     'integrated_rating' => 'Clasificación',
     'battles' => 'Batallas',
