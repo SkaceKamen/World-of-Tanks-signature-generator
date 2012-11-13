@@ -1,4 +1,5 @@
 <?php
+//Translated by ICA WOT
 $language_id = 3;
 $translation = array(
     'integrated_rating' => 'Valutazione',
