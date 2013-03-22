@@ -172,7 +172,7 @@ if (file_exists(WOT_FOLDER_BACKGROUNDS . '/categories.dat'))
     $cat_lines = explode(PHP_EOL, file_get_contents(WOT_FOLDER_BACKGROUNDS . '/categories.dat'));
     foreach($cat_lines as $line)
     {
-        $ex = explode(':', $line);
+        $ex = explode(':', trim($line));
         if (!isset($categories[$ex[1]]))
         {
             $categories[$ex[1]] = array();
@@ -346,7 +346,7 @@ if (file_exists(WOT_FOLDER_BACKGROUNDS . '/categories.dat'))
   <div class="sig_buttons">  
     <div onclick="sig_category()" class="button selected" id="cat_all"><?php echo @$translation['category_all']?></div>  
     <?php foreach($categories as $category=>$bgs): ?>
-    <div onclick="sig_category('<?php echo $category?>')" class="button" id="cat_<?php echo $category?>"><?php echo @$translation['category_' . $category]?></div>  
+    <div onclick="sig_category('<?php echo $category?>')" class="button" id="cat_<?php echo $category?>"><?php echo @$translation[trim('category_' . $category)]?></div>  
     <?php endforeach; ?>
     <div class="clear"></div>
   </div>

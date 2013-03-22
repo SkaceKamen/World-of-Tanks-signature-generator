@@ -164,7 +164,13 @@ function sig_category(category)
     {
         total = CATEGORIES[category].length;
         list = CATEGORIES[category];
-    }
+    } else {
+		list = [];
+		for(var i in CATEGORIES)
+			for(var x = 0; x < CATEGORIES[i].length; x++)
+				list.push(CATEGORIES[i][x]);
+		total = list.length;
+	}
     for(var i = 0; i < total; i++)
     {
         var num = i;
