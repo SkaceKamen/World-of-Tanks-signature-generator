@@ -91,7 +91,7 @@ class Player
                 $try = 0;
                 do
                 {
-                    $json = @file_get_contents($url);
+                    $json = @$this->fetch_contents($url);
                     $try++;
                     if ($try > 5)
                     {
@@ -429,7 +429,7 @@ class Player
     
     public function fetch_contents($url)
     {
-        if (function_exists('curl_version'))
+        if (function_exists('curl_init'))
         {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -442,7 +442,7 @@ class Player
             if (ini_get('allow_url_fopen'))
             {
                 return file_get_contents($url);
-            }
+            } else throw new Exception('You need curl module, or \'allow_url_fopen\' directive enabled');
         }
         return false;
     }
